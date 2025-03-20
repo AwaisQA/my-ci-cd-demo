@@ -1,0 +1,24 @@
+name: CI/CD Pipeline
+
+on: 
+  push:
+    branches:
+      - main  # Runs on push to the main branch
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Run a Simple Test
+        run: echo "Code uploaded successfully!"
+
+  deploy:
+    needs: test  # Runs only if tests pass
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploying Project
+        run: echo "Deploying to production..."
+
